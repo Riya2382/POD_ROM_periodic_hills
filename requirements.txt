@@ -1,0 +1,5 @@
+numpy
+scipy
+scikit-learn
+matplotlib
+torch    # only needed for src/03_nn_surrogate.py

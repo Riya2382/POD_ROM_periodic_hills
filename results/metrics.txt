@@ -1,0 +1,46 @@
+Parametric POD-ROM (mean flow) - leak-free leave-one-out
+========================================================
+cases: 29   state dim: 25,600   retained modes: 10
+POD basis floor (per fold): 5.62% mean
+
+Surrogate (geometry -> POD coeffs) LOO relative-L2 error:
+  RBF (thin-plate)     mean  6.48%  median  6.37%  max 14.11%
+  Gaussian Process     mean  7.43%  median  7.20%  max 14.81%
+  Random Forest        mean  8.67%  median  7.98%  max 20.78%
+  Gradient Boosting    mean  8.77%  median  8.22%  max 16.22%
+
+best surrogate: RBF (thin-plate)
+example unseen case alph125-99645-3036: u rel-L2 = 3.90%
+
+Mode sweep (RBF surrogate):
+  r= 2  floor 10.64%  surrogate 10.68%
+  r= 3  floor  9.63%  surrogate  9.68%
+  r= 5  floor  7.30%  surrogate  7.63%
+  r= 8  floor  5.72%  surrogate  6.45%
+  r=10  floor  5.62%  surrogate  6.48%
+  r=12  floor  5.41%  surrogate  6.34%
+  r=15  floor  4.94%  surrogate  6.12%
+  r=18  floor  4.78%  surrogate  6.09%
+  r=22  floor  4.52%  surrogate  6.07%
+
+Neural-net add-on (PyTorch MLP, leak-free LOO):
+  RBF  mean 6.48%  median 6.37%
+  MLP  mean 7.02%  median 6.94%
+
+Turbulence ROM (TKE + Reynolds shear stress uv) - leak-free
+========================================================
+first 10 modes capture 99.1% of turbulence-field energy
+POD basis floor (per fold): 15.50% mean
+  RBF (thin-plate)     mean 21.71%  median 19.74%
+  Gaussian Process     mean 27.13%  median 22.87%
+best surrogate: RBF (thin-plate)
+example unseen case alph125-99645-3036: TKE rel-L2 = 15.82%, uv rel-L2 = 9.26%
+
+A priori RANS closure test (DNS case alph125-99645-3036, no solver run)
+========================================================
+optimal eddy viscosity negative over 11% of the turbulent region (Boussinesq non-physical there)
+mean stress-strain alignment cos(a,S) = -0.79 (Boussinesq ideal = -1.00)
+shear stress vs mean shear strain correlation = -0.29 (R^2 = 0.08) on the active-strain turbulent region
+  (Boussinesq assumes a single scalar nu_t mapping S12 onto the shear stress, i.e. a perfect straight line / |corr| = 1;
+   the scatter and the negative-viscosity / misalignment diagnostics above are exactly why a tensor-basis closure
+   (Pope 1975 / Ling et al. 2016 TBNN) is the motivated next step beyond the linear eddy-viscosity hypothesis)

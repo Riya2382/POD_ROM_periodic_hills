@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+
+# DNS data (several GB) and cached interpolated fields
+data/*
+!data/README.md
+results/cache/
