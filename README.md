@@ -114,8 +114,7 @@ src/
   02_pod_rom.py
   03_nn_surrogate.py
   04_reynolds_stress.py
-  05_apriori_closure.py
-figures/              output figures
+  figures/              output figures
 results/metrics.txt   output metrics
 data/                 put the DNS database here
 ```
