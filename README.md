@@ -95,7 +95,6 @@ python src/01_explore_data.py      # geometry family, mean-flow examples, design
 python src/02_pod_rom.py           # POD, surrogates, leave-one-out, mode sweep, uncertainty
 python src/03_nn_surrogate.py      # MLP surrogate (needs torch)
 python src/04_reynolds_stress.py   # TKE and Reynolds shear stress ROM
-python src/05_apriori_closure.py   # a priori Boussinesq test
 ```
 
 Figures go to `figures/` and metrics to `results/metrics.txt`. `02` rewrites the
