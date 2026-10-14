@@ -67,18 +67,6 @@ leave-one-out loop on the coefficients. That lets the held-out case shape the
 basis, and it reported 6.0 % (RBF) with a 3.2 % floor. Rebuilding mean, scaling
 and basis inside each fold gives the 6.5 % and 5.6 % above.
 
-## A priori check of the eddy-viscosity hypothesis
-
-`src/05_apriori_closure.py` uses the exact DNS mean field of one separated case
-(`alph125-99645-3036`) and asks how well a linear eddy viscosity could describe
-the DNS Reynolds stresses. No RANS solver is involved.
-
-- The eddy viscosity implied by `<u'v'>` is negative over 11 % of the turbulent region.
-- Mean alignment between the stress anisotropy and the strain rate is
-  cos = -0.79 (Boussinesq needs -1).
-- Correlation of `<u'v'>` with the mean shear strain is -0.29 (R^2 = 0.08).
-
-![A priori closure test](figures/11_apriori_closure.png)
 
 ## Limitations
 
